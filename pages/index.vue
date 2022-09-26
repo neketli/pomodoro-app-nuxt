@@ -9,7 +9,7 @@
         {{ currentTime }}
       </h2>
     </v-row>
-    <v-row class="mt-16" justify="center" gap align="center">
+    <v-row class="mt-16 mb-8" justify="center" gap align="center">
       <v-btn
         v-if="!isStarted"
         class="mx-8"
@@ -50,23 +50,25 @@
         It's time to relax!
       </v-snackbar>
 
-      <v-col v-for="todo in todos" :key="todo.id" cols="12">
-        <v-card :color="`${todo.color} lighten-2`" class="pa-6" dark>
-          <v-checkbox
-            light
-            class="pa-0 ma-0"
-            :input-value="todo.done"
-            :label="todo.text"
-            :color="`${todo.color} darken-4`"
-            hide-details
-            @change="change(todo)"
-          />
+      <v-slide-y-transition class='ma-0' group tag='v-row'>
+        <v-col v-for="todo in todos" :key="todo.id" cols="12">
+          <v-card :color="`${todo.color} lighten-2`" class="pa-6" dark>
+            <v-checkbox
+              light
+              class="pa-0 ma-0"
+              :input-value="todo.done"
+              :label="todo.text"
+              :color="`${todo.color} darken-4`"
+              hide-details
+              @change="change(todo)"
+            />
 
-          <v-btn class="mt-4" @click="removeTodo(todo)">
-            <v-icon>mdi-delete</v-icon>
-          </v-btn>
-        </v-card>
-      </v-col>
+            <v-btn class="mt-4" @click="removeTodo(todo)">
+              <v-icon>mdi-delete</v-icon>
+            </v-btn>
+          </v-card>
+        </v-col>
+      </v-slide-y-transition>
     </v-row>
   </v-col>
 </template>
@@ -100,10 +102,8 @@ export default {
     },
   },
   created() {
-    if (process.browser) {
-      const todos = JSON.parse(localStorage.getItem('todos'))
-      this.setTodos(todos)
-    }
+    const todos = JSON.parse(localStorage.getItem('todos')) || []
+    this.setTodos(todos)
   },
   mounted() {
     const audioFile = require('@/assets/clock.mp3').default
@@ -164,7 +164,7 @@ export default {
             this.timeBreak()
           }
         }
-      }, 100)
+      }, 1000)
     },
     reset() {
       this.isSnackbarShowing = false
