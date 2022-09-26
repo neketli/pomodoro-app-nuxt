@@ -60,9 +60,9 @@ export default {
       dark: true,
       themes: {
         dark: {
-          primary: colors.deepPurple.base,
+          primary: colors.blue.base,
           secondary: colors.pink.base,
-          accent: colors.cyan.base,
+          accent: colors.deepOrange.base,
           error: colors.red.base,
           warning: colors.orange.base,
           info: colors.teal.base,
@@ -73,5 +73,15 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config) {
+      config.module.rules.push({
+        test: /\.(mp3)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+        },
+      })
+    },
+  },
 }
