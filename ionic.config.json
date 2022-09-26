@@ -1,0 +1,7 @@
+{
+  "name": "pomodoro-app-nuxt",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
