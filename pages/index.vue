@@ -1,87 +1,67 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation </a
-            >.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
+  <v-col>
+    <v-row class="mt-16" justify="center" align="center">
+      <h2 class="text-h1 purple--text text--lighten-2">{{ currentTime }}</h2>
+    </v-row>
+    <v-row class="mt-16" justify="center" gap align="center">
+      <v-btn class="mx-8" color="primary" elevation="1">Start</v-btn>
+      <v-btn class="mx-8" color="secondary" elevation="1">Reset</v-btn>
+    </v-row>
+    <v-row>
+      <v-col cols="12">
+        <v-card dark>
+          <v-card-title class="text-h5"> Add todo: </v-card-title>
+
+          <v-text-field
+		  class='pt-2 px-4'
+		  counter="300"
+              label="Outlined"
+              placeholder="Placeholder"
+              outlined
+            ></v-text-field>
+
+          <v-card-actions>
+            <v-btn text> Add now </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+
+	  <v-col cols="12">
+        <v-card dark>
+          <v-card-title class="text-h5"> Add todo: </v-card-title>
+
+          <v-card-subtitle
+            >Listen to your favorite artists and albums whenever and wherever,
+            online and offline.</v-card-subtitle
           >
-            Nuxt Documentation
-          </a>
-          <br />
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire"> Continue </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+
+          <v-card-actions>
+            <v-btn text> Listen Now </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-col>
 </template>
 
 <script>
 export default {
   name: 'IndexPage',
+  data() {
+    return {
+      minutes: 25,
+      seconds: 0,
+    }
+  },
+  head: {
+    title: 'Pomodoro app',
+  },
+  computed: {
+    currentTime() {
+      return `${this.minutes.toString().padStart(2, '0')}:${this.seconds
+        .toString()
+        .padStart(2, '0')}`
+    },
+  },
 }
 </script>
