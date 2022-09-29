@@ -7,10 +7,13 @@
 ## Simple pomodoro app to focus and control your productivity :watch:
 
 App maded by nuxtjs, vuetify and capacitor.
-
 Implemented this for practice and test of capacitor.
 
-[![pomodoro-preview](https://user-images.githubusercontent.com/48692866/192950986-82f1a88a-8f8f-45c1-ab29-a1349eb9c17a.gif)](https://neketli-pomodoro.netlify.app/)
+If you want apk for your android: [![download](https://img.shields.io/badge/click_here_to-download-blue.svg)](https://github.com/neketli/pomodoro-app-nuxt/releases/download/1.0.0/pomodoro-app.apk)
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/48692866/192950986-82f1a88a-8f8f-45c1-ab29-a1349eb9c17a.gif">
+</div>
 
 ### For develop :rocket:
 
