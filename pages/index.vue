@@ -9,7 +9,7 @@
         {{ currentTime }}
       </h2>
     </v-row>
-    <v-row class="mt-16 mb-8" justify="center" gap align="center">
+    <v-row class="mt-16" justify="center" gap align="center">
       <v-btn
         v-if="!isStarted"
         class="mx-8"
@@ -25,7 +25,7 @@
         >Reset</v-btn
       >
     </v-row>
-    <v-row>
+    <v-row class="mt-8">
       <v-col cols="12">
         <v-card dark>
           <v-card-title class="text-h5"> What we gonna do today? </v-card-title>
@@ -46,34 +46,34 @@
           </v-card-actions>
         </v-card>
       </v-col>
-
-      <v-snackbar v-model="isSnackbarShowing" color="success">
-        It's time to relax!
-      </v-snackbar>
-
-      <v-slide-y-transition class="ma-0" group tag="v-row">
-        <v-col v-for="todo in todos" :key="todo.id" cols="12">
-          <v-card
-            :color="`${todo.color} lighten-2`"
-            class="pa-6 d-flex align-center"
-            dark
-          >
-            <v-checkbox
-              light
-              class="pa-0 ma-0 d-inline-block"
-              :input-value="todo.done"
-              :color="`${todo.color} darken-4`"
-              :label="todo.text"
-              hide-details
-              @change="change(todo)"
-            />
-            <v-btn class="ml-auto" @click="removeTodo(todo)">
-              <v-icon>mdi-delete</v-icon>
-            </v-btn>
-          </v-card>
-        </v-col>
-      </v-slide-y-transition>
     </v-row>
+
+    <v-slide-y-transition class="mx-0" group tag="v-row">
+      <v-col v-for="todo in todos" :key="todo.id" cols="12">
+        <v-card
+          :color="`${todo.color} lighten-2`"
+          class="pa-6 d-flex align-center"
+          dark
+        >
+          <v-checkbox
+            light
+            class="pa-0 ma-0 d-inline-block"
+            :input-value="todo.done"
+            :color="`${todo.color} darken-4`"
+            :label="todo.text"
+            hide-details
+            @change="change(todo)"
+          />
+          <v-btn class="ml-auto" @click="removeTodo(todo)">
+            <v-icon>mdi-delete</v-icon>
+          </v-btn>
+        </v-card>
+      </v-col>
+    </v-slide-y-transition>
+
+    <v-snackbar v-model="isSnackbarShowing" color="success">
+      It's time to relax!
+    </v-snackbar>
   </v-col>
 </template>
 
