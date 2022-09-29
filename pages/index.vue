@@ -36,6 +36,7 @@
             counter="300"
             label="To do"
             outlined
+            @keydown.enter="addTodo"
           />
 
           <v-card-actions>
@@ -122,6 +123,7 @@ export default {
       setTodos: 'todos/setTodos',
     }),
     addTodo() {
+      if (!this.inputField) return
       this.create({ text: this.inputField, color: this.getRandomColor() })
       this.inputField = ''
       this.updateStorage()
