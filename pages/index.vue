@@ -31,7 +31,7 @@
           <v-card-title class="text-h5"> What we gonna do today? </v-card-title>
 
           <v-text-field
-            v-model="inputField"
+            v-model.trim="inputField"
             class="pt-2 px-4"
             counter="300"
             label="To do"
@@ -50,20 +50,23 @@
         It's time to relax!
       </v-snackbar>
 
-      <v-slide-y-transition class='ma-0' group tag='v-row'>
+      <v-slide-y-transition class="ma-0" group tag="v-row">
         <v-col v-for="todo in todos" :key="todo.id" cols="12">
-          <v-card :color="`${todo.color} lighten-2`" class="pa-6" dark>
+          <v-card
+            :color="`${todo.color} lighten-2`"
+            class="pa-6 d-flex align-center"
+            dark
+          >
             <v-checkbox
               light
-              class="pa-0 ma-0"
+              class="pa-0 ma-0 d-inline-block"
               :input-value="todo.done"
-              :label="todo.text"
               :color="`${todo.color} darken-4`"
+              :label="todo.text"
               hide-details
               @change="change(todo)"
             />
-
-            <v-btn class="mt-4" @click="removeTodo(todo)">
+            <v-btn class="ml-auto" @click="removeTodo(todo)">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
           </v-card>
@@ -192,3 +195,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.v-label {
+  word-break: break-word;
+}
+</style>
